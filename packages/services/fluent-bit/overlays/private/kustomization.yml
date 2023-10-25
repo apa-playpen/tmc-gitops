@@ -5,7 +5,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
-- ../
+- ../../base/
 
 secretGenerator:
 - name: fluent-bit-packages-values
