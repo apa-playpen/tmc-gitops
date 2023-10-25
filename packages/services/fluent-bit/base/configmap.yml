@@ -5,8 +5,8 @@ metadata:
   name: test-config
   namespace: default
 data:
-  host: "${logger_name:=defaultname}"
-  port: "${logger_port:=defaultport}"
+  host: "${logger_name:=0.0.0.0}"
+  port: "${logger_port:=443}"
 
 
 
