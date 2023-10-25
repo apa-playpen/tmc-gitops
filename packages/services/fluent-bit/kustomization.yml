@@ -6,13 +6,4 @@ generatorOptions:
 
 resources:
 - package-install.yml
-
-secretGenerator:
-- name: fluent-bit-packages-values
-  namespace: tkg-system
-  files:
-  - values.yml
-  type: Opaque
-  options:
-    annotations:
-      tkg.tanzu.vmware.com/tanzu-package: fluent-bit-packages
+- configmap.yml

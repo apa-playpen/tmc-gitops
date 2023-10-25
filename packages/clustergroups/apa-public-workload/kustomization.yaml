@@ -5,4 +5,5 @@ generatorOptions:
 
 resources:
 - ../../common/
+- ../../services/fluent-bit/public/
 

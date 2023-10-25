@@ -4,5 +4,4 @@ resources:
 - ../services/cluster-name-secret/
 - ../services/prometheus/
 - ../services/cadvisor/
-- ../services/fluent-bit/
 

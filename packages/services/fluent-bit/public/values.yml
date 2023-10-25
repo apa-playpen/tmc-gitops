@@ -14,9 +14,11 @@ fluent_bit:
       [OUTPUT]
         Name   syslog
         Match  kube.*
-        Host   ${logger_name:=defaultname}
-        Port   ${logger_port:=defaultport}
-        Mode   udp
+        tls    On
+        Host   data.mgmt.cloud.vmware.com
+        Port   443
+        URI    /le-mans/v1/streams/ingestion-pipeline-stream
+        Header Authorization Bearer llAvEjsob9XPsTrtYmu3ijzOkDSYWOdA 
         Syslog_Format        rfc5424
         Syslog_Hostname_key  tkg_cluster
         Syslog_Appname_key   pod_name
@@ -29,9 +31,11 @@ fluent_bit:
       [OUTPUT]
         Name   syslog
         Match  kube_systemd.*
-        Host   ${logger_name:=defaultname}
-        Port   ${logger_port:=defaultport}
-        Mode   udp
+        tls    On
+        Host   data.mgmt.cloud.vmware.com
+        Port   443
+        URI    /le-mans/v1/streams/ingestion-pipeline-stream
+        Header Authorization Bearer llAvEjsob9XPsTrtYmu3ijzOkDSYWOdA 
         Syslog_Format        rfc5424
         Syslog_Hostname_key  tkg_cluster
         Syslog_Appname_key   tkg_instance

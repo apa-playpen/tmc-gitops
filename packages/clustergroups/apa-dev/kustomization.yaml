@@ -6,5 +6,6 @@ generatorOptions:
 
 resources:
 - ../../common/
+- ../../services/fluent-bit/private/
 - ../../services/cert-manager/
 - ../../services/contour/
