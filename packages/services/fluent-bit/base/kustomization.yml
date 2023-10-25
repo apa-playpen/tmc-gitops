@@ -6,4 +6,3 @@ generatorOptions:
 
 resources:
 - package-install.yml
-- configmap.yml
