@@ -6,5 +6,5 @@ generatorOptions:
 resources:
 - ../../services/package-repo/
 - ../../common/
-- ../../services/fluent-bit/public/
+- ../../services/fluent-bit/overlays/public/
 
