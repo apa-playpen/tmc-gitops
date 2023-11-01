@@ -6,4 +6,4 @@ metadata:
   name: general-config
   namespace: tanzu-continuousdelivery-resources
 data:
-  clustergroup: apa-tap-workload
+  clustergroup: apa-dev-tap
