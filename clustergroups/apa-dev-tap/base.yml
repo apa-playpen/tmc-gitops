@@ -25,7 +25,11 @@ spec:
   - name: group-rbac
     namespace: tanzu-continuousdelivery-resources
   interval: 5m0s
-  path: packages/clustergroups/apa-public-workload
+  path: packages/clustergroups/apa-dev-tap
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: general-config
   prune: true
   sourceRef:
     kind: GitRepository
