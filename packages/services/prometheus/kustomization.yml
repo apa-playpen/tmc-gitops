@@ -9,7 +9,7 @@ resources:
 
 secretGenerator:
 - name: prometheus-packages-values
-  namespace: tkg-system
+  namespace: gitops-system
   files:
   - values.yml
   type: Opaque

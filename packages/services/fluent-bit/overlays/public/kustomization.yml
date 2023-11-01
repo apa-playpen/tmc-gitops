@@ -9,7 +9,7 @@ resources:
 
 secretGenerator:
 - name: fluent-bit-packages-values
-  namespace: tkg-system
+  namespace: gitops-system
   files:
   - values.yml
   type: Opaque
