@@ -20,7 +20,6 @@ alertmanager:
   pvc:
     accessMode: ReadWriteOnce
     storage: 2Gi
-    storageClassName: general-usage
   service:
     port: 80
     targetPort: 9093
@@ -28,14 +27,14 @@ alertmanager:
 ingress:
   alertmanager_prefix: /alertmanager/
   alertmanagerServicePort: 80
-  enabled: true
+  enabled: false
   prometheus_prefix: /
   prometheusServicePort: 80
   tlsCertificate:
     ca.crt: 
     tls.crt: 
     tls.key: 
-  virtual_host_fqdn: prometheus.home.local
+  virtual_host_fqdn: prometheus.cluster.local
 kube_state_metrics:
   deployment:
     replicas: 1
