@@ -8,7 +8,7 @@ resources:
 
 
 secretGenerator:
-- name: grafana-packages-values
+- name: grafana-package-values
   namespace: tmc-gitops
   files:
   - values.yml
