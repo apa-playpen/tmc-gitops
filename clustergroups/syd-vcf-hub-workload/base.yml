@@ -6,7 +6,7 @@ metadata:
   namespace: tanzu-continuousdelivery-resources
 spec:
   interval: 5m0s
-  path: packages/security/psp-tkgs
+  path: packages/security/psp
   prune: true
   sourceRef:
     kind: GitRepository
