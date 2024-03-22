@@ -1,0 +1,14 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: grafana
+  namespace: tmc-gitops
+spec:
+  serviceAccountName: platform-gitops-sa
+  packageRef:
+    refName: grafana.tanzu.vmware.com
+    versionSelection:
+      constraints: 10.0.1+vmware.1-tkg.2
+  values:
+  - secretRef:
+      name: grafana-package-values

@@ -4,5 +4,6 @@ resources:
 - ../services/package-repo/
 - ../services/cluster-name-secret/
 - ../services/prometheus/
+- ../services/grafana/
 - ../services/cadvisor/
 
