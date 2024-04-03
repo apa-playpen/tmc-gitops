@@ -19,7 +19,7 @@ alertmanager:
     updateStrategy: Recreate
   pvc:
     accessMode: ReadWriteOnce
-    storage: 2Gi
+    storage: 3Gi
   service:
     port: 80
     targetPort: 9093

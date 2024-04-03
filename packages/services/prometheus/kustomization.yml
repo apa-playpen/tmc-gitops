@@ -6,7 +6,6 @@ generatorOptions:
 resources:
 - package-install.yml
 
-
 secretGenerator:
 - name: prometheus-packages-values
   namespace: tmc-gitops
