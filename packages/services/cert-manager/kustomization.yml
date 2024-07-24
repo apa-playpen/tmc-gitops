@@ -4,5 +4,5 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
+- namespace.yml
 - package-install.yml
-

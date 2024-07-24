@@ -1,8 +1,0 @@
-# PSP is deprecated and will be removed from 1.26. Disable policy when VCF upgraded to 5.1 and k8s 1.25+ deployed
-
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-- securitypolicy.yml
-- clusterrole.yml
-- clusterrolebinding.yml

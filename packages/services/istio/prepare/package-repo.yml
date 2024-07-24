@@ -1,0 +1,9 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageRepository
+metadata:
+  name: istio-oss-packages
+  namespace: platform-gitops
+spec:
+  fetch:
+    imgpkgBundle:
+      image: extensions.aws-usw2.tmc-dev.cloud.vmware.com/packages/istio-oss-packages:1.22.0-tanzu.1

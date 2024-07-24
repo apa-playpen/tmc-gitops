@@ -1,0 +1,32 @@
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-secret
+  namespace: cert-manager
+type: Opaque
+stringData:
+  api-key: ${cloudflare_token}
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-cloudflare-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: davidlloyd0@gmail.com
+
+    privateKeySecretRef:
+      name: cloudflare-encrypt-secret
+
+    solvers:
+      - dns01:
+          cloudflare:
+            email: davidlloyd0@gmail.com
+            apiKeySecretRef:
+              name: cloudflare-secret
+              key: api-key

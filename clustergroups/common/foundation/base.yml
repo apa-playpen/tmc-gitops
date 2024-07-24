@@ -1,0 +1,88 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: group-security
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  interval: 5m0s
+  path: packages/security
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-identity
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: group-security
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/services/cluster-name-secret
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: group-apps
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: cluster-identity
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/clustergroups/${clustergroup}
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: general-config
+      - kind: Secret
+        name: cluster-name-secret
+      - kind: Secret
+        name: platform-credentials
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: clustergroup-gitops
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: group-apps
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: clustergroups/common/per-cluster
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: general-config
+      - kind: Secret
+        name: cluster-name-secret
+      - kind: Secret
+        name: platform-credentials
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+---

@@ -3,7 +3,7 @@ apiVersion: packaging.carvel.dev/v1alpha1
 kind: PackageInstall
 metadata:
   name: prometheus
-  namespace: tmc-gitops
+  namespace: platform-gitops
 spec:
   serviceAccountName: platform-gitops-sa
   packageRef:

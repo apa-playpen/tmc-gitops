@@ -1,0 +1,18 @@
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tap-cert
+  namespace: default
+spec:
+  commonName: "*.${dnsname}" 
+  dnsNames:
+    - "*.${dnsname}"
+  issuerRef:
+    name: letsencrypt-cloudflare-issuer
+    kind: ClusterIssuer
+  secretName: tap-cert 
+  duration: 720h
+  renewBefore: 360h

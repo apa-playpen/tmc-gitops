@@ -8,7 +8,7 @@ resources:
 
 secretGenerator:
 - name: prometheus-packages-values
-  namespace: tmc-gitops
+  namespace: platform-gitops
   files:
   - values.yml
   type: Opaque

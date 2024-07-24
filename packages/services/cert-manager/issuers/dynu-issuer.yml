@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  api-key: ${dynu_apikey}
+kind: Secret
+metadata:
+  name: dynu-secret
+  namespace: cert-manager
+type: Opaque
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-dynu-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory              # Use this for prod
+    #server: https://acme-staging-v02.api.letsencrypt.org/directory    # Use this for staging/testing
+    email: davidlloyd0@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-dynu-encrypt-secret
+
+    solvers:
+      - dns01:
+          cnameStrategy: Follow
+          webhook:
+            groupName: com.github.dopingus.cert-manager-webhook-dynu
+            solverName: dynu
+            config:
+              secretName: dynu-secret
+
+---

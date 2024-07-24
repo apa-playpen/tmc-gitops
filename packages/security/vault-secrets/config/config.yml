@@ -1,0 +1,93 @@
+
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: vso-sp
+#   namespace: platform-gitops
+# data:
+#   clientID: <CLIENTID>
+#   clientSecret: <CLIENTSECRET>
+# type: Opaque
+
+--- 
+
+# apiVersion: secretgen.carvel.dev/v1alpha1
+# kind: SecretExport
+# metadata:
+#   name: vso-sp
+#   namespace: platform-gitops
+# spec:
+#   toNamespace: '*'
+
+---
+
+
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: HCPAuth
+metadata:
+  name: default
+  namespace: vault-secrets-operator
+spec:
+  organizationID: a2b972d7-2113-4982-9af9-25fffd62fc05
+  projectID: 2acef5f5-4ace-4615-a5c7-e17d522a1e31
+  servicePrincipal:
+    secretRef: vso-sp
+
+
+--- 
+# Secret Importer below needs a secret created in platform-gitops via TMC Secrets management
+#  - ensure secret is named vso-op
+#  - set password to be exportable to all namespaces
+
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretImport
+metadata:
+  name: vso-sp
+  namespace: vault-secrets-operator
+spec:
+  fromNamespace: platform-gitops
+
+
+--- 
+
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretImport
+metadata:
+  name: vso-sp
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  fromNamespace: platform-gitops
+
+
+--- 
+
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: HCPVaultSecretsApp
+metadata:
+  name: platform-credentials
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  appName: platform-credentials
+  destination:
+    create: true
+    labels:
+      hvs: "true"
+    name: platform-credentials
+  refreshAfter: 15m
+  
+--- 
+
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: HCPVaultSecretsApp
+metadata:
+  name: platform-credentials
+  namespace: platform-gitops
+spec:
+  appName: platform-credentials
+  destination:
+    create: true
+    labels:
+      hvs: "true"
+    name: platform-credentials
+  refreshAfter: 15m
+  

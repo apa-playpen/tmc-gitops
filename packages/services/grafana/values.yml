@@ -81,7 +81,7 @@ grafana:
 
 ingress:
   enabled: false
-  virtual_host_fqdn: "grafana.cluster.local"
+  virtual_host_fqdn: "grafana.home.local"
   prefix: "/"
   servicePort: 80
   #! [Optional] The certificate for the ingress if you want to use your own TLS certificate.

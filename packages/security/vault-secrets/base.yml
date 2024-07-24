@@ -1,0 +1,33 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: vault-secret-install
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  interval: 5m0s
+  path: packages/security/vault-secrets/install
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+--- 
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: vault-secret-config
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: vault-secret-install
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/security/vault-secrets/config
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops

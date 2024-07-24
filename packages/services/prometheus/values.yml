@@ -19,7 +19,8 @@ alertmanager:
     updateStrategy: Recreate
   pvc:
     accessMode: ReadWriteOnce
-    storage: 3Gi
+    storage: 2Gi
+    storageClassName: general-usage
   service:
     port: 80
     targetPort: 9093
@@ -34,7 +35,7 @@ ingress:
     ca.crt: 
     tls.crt: 
     tls.key: 
-  virtual_host_fqdn: prometheus.cluster.local
+  virtual_host_fqdn: prometheus.home.local
 kube_state_metrics:
   deployment:
     replicas: 1

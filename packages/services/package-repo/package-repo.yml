@@ -2,9 +2,8 @@ apiVersion: packaging.carvel.dev/v1alpha1
 kind: PackageRepository
 metadata:
   name: tanzu-standard
-  namespace: tmc-gitops
+  namespace: platform-gitops
 spec:
   fetch:
     imgpkgBundle:
-      image: projects-stg.registry.vmware.com/tkg/packages/standard/repo:v2024.2.1
-      
+      image: projects-stg.registry.vmware.com/tkg/packages/standard/repo:v2024.5.16

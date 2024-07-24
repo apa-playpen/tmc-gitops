@@ -1,0 +1,15 @@
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: external-dns
+  namespace: platform-gitops
+spec:
+  serviceAccountName: platform-gitops-sa
+  packageRef:
+    refName: external-dns.tanzu.vmware.com
+    versionSelection:
+      constraints: 0.13.6+vmware.1-tkg.1
+  values:
+  - secretRef:
+      name: externaldns-packages-values

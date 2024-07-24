@@ -1,0 +1,121 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tap-security
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: tap-config
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/services/tap/security
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: tap-gitops-config
+      - kind: Secret
+        name: platform-credentials
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tap-template
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: tap-security
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/services/tap/template
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: tap-gitops-config
+      - kind: Secret
+        name: platform-credentials
+      - kind: Secret
+        name: tap-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tap-install
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: tap-template
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/services/tap/platform
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: platform-credentials
+      - kind: ConfigMap
+        name: tap-gitops-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tap-builders
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: tap-install
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/services/tap/builders
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tap-supplychain
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: tap-install
+    namespace: tanzu-continuousdelivery-resources
+  interval: 5m0s
+  path: packages/services/tap/supplychains
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: platform-credentials
+      - kind: ConfigMap
+        name: tap-gitops-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: platform-gitops
+

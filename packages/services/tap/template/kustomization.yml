@@ -1,0 +1,75 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+resources:
+#- ../personas/tap2.home.tanzu.rocks/config/configmap.yml
+- valuessecret.yml
+- ../base/
+
+# vars:
+# - name: dnsname
+#   objref:
+#     kind: ConfigMap
+#     name: tap-gitops-config
+#     apiVersion: v1
+#   fieldref:
+#     fieldpath: data.dnsname
+# - name: gitopshost
+#   objref:
+#     kind: ConfigMap
+#     name: tap-gitops-config
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.gitops_host
+# - name: gitopsowner
+#   objref:
+#     kind: ConfigMap
+#     name: tap-gitops-config
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.gitops_owner
+# - name: gitopsrepo
+#   objref:
+#     kind: ConfigMap
+#     name: tap-gitops-config
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.gitops_repo
+# - name: registryhost
+#   objref:
+#     kind: ConfigMap
+#     name: tap-gitops-config
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.registry_host
+# - name: registryproject
+#   objref:
+#     kind: ConfigMap
+#     name: tap-gitops-config
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.registry_project
+# - name: gittoken
+#   objref:
+#     kind: Secret 
+#     name: platform-credentials
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.git_token
+# - name: gitclientid
+#   objref:
+#     kind: Secret 
+#     name: platform-credentials
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.git_clientid_tap2
+# - name: gitclientsecret
+#   objref:
+#     kind: Secret 
+#     name: platform-credentials
+#     apiVersion: v1
+#   fieldref: 
+#     fieldpath: data.git_clientsecret_tap2
