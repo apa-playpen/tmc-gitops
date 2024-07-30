@@ -6,4 +6,4 @@ metadata:
 spec:
   fetch:
     imgpkgBundle:
-      image: projects-stg.registry.vmware.com/tkg/packages/standard/repo:v2024.5.16
+      image: projects.packages.broadcom.com/tkg/packages/standard/repo:v2024.5.16

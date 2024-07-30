@@ -6,7 +6,7 @@ metadata:
 spec:
   fetch:
     imgpkgBundle:
-      image: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:${tapversion}
+      image: projects.packages.broadcom.com/tanzu-application-platform/tap-packages:${tapversion}
 
 ---
 
@@ -18,7 +18,7 @@ metadata:
 spec:
   fetch:
     imgpkgBundle:
-      image: registry.tanzu.vmware.com/tanzu-application-platform/full-deps-package-repo:${tapversion}
+      image: projects.packages.broadcom.com/tanzu-application-platform/full-deps-package-repo:${tapversion}
 
 
 
