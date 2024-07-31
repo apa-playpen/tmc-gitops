@@ -5,5 +5,5 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
-- ../../packages/services/tap/personas/tap5.tanzu.rocks/
+- ../../packages/services/tap/personas/tap1.tanzu.rocks/
 
