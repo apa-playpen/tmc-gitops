@@ -6,4 +6,4 @@ metadata:
 spec:
   fetch:
     imgpkgBundle:
-      image: extensions.aws-usw2.tmc.cloud.vmware.com/packages/standard/repo:v2024.5.16
+      image: projects.registry.vmware.com/tkg/packages/standard/repo:v2024.5.16
