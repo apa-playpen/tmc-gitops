@@ -19,7 +19,5 @@ spec:
   fetch:
     imgpkgBundle:
       image: projects.packages.broadcom.com/tanzu-application-platform/full-deps-package-repo:${tapversion}
-
-
-
+ 
 
