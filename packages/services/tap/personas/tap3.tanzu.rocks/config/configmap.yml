@@ -12,7 +12,7 @@ data:
   gitops_owner: davlloyd
   gitops_repo: home-tap-gitops
   gitops_workload_repo: tap-gitops-home-3
-  registry_host: harbor.home.tanzu.rocks
+  registry_host: harbor.tanzu.rocks
   registry_project: tap
   profile: full
   ns_additions: additions    # Support for supplychain versus cartographer supported additions
