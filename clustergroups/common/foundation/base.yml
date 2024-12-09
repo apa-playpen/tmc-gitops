@@ -51,8 +51,8 @@ spec:
         name: general-config
       - kind: Secret
         name: cluster-name-secret
-      # - kind: Secret
-      #   name: platform-credentials
+      - kind: Secret
+        name: platform-credentials
   prune: true
   sourceRef:
     kind: GitRepository
@@ -77,8 +77,8 @@ spec:
         name: general-config
       - kind: Secret
         name: cluster-name-secret
-      # - kind: Secret
-      #   name: platform-credentials
+      - kind: Secret
+        name: platform-credentials
   prune: true
   sourceRef:
     kind: GitRepository

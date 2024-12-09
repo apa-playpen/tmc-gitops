@@ -67,7 +67,7 @@ metadata:
   name: platform-credentials
   namespace: tanzu-continuousdelivery-resources
 spec:
-  appName: platform-credentials
+  appName: platform
   destination:
     create: true
     labels:
@@ -83,7 +83,7 @@ metadata:
   name: platform-credentials
   namespace: platform-gitops
 spec:
-  appName: platform-credentials
+  appName: platform
   destination:
     create: true
     labels:
