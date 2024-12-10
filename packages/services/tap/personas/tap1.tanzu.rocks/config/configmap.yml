@@ -17,5 +17,5 @@ data:
   registry_project: tap
   profile: full
   ns_additions: additions    # Support for supplychain versus cartographer supported additions
-  s3_url: http://minio.home.local:9000    # credentials saved in secret store under s3_accessid and s3_accesskey
+  s3_url: https://minio.home.local:9000    # credentials saved in secret store under s3_accessid and s3_accesskey
   s3_region: au-syd-1
